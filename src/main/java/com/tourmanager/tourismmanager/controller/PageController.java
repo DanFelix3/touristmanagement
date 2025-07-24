@@ -22,7 +22,7 @@ public class PageController {
 
     @GetMapping("/home")
     public String displayHomePage(){
-        return "homePage.html";
+        return "index.html";
     }
 
 
@@ -30,6 +30,6 @@ public class PageController {
     public String showCreateResultPage(@Valid TourismBookingModel tourismBookingModel, BindingResult bindingResul, Model model){
         tourismManagementServices.add(tourismBookingModel);
         model.addAttribute("title","Job Cards Updated");
-        return "";
+        return "index.html";
     }
 }
