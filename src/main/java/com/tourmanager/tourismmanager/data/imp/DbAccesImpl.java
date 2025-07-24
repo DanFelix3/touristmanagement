@@ -4,7 +4,9 @@ import com.tourmanager.tourismmanager.data.DbAccess;
 import com.tourmanager.tourismmanager.model.TourismBookingModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class DbAccesImpl implements DbAccess {
 
     @Autowired
@@ -12,8 +14,7 @@ public class DbAccesImpl implements DbAccess {
 
     @Override
     public TourismBookingModel save(TourismBookingModel tourismBookingModel){
-        int res1 = restTemplate.update("INSERT INTO BOOKTABLE( FIRSTNAME, LASTNAME, EMAIL, " +
-                "NUMBER, PACKAGE, GUESTNO, DATE, TIME, REQUIREMENT) VALUES( ?,?,?,?,?,?,?,?,?)",
+        int res1 = restTemplate.update("INSERT INTO BOOKTABLE( FIRSTNAME, LASTNAME, EMAIL, PHNUMBER, PACKAGESELECT, GUESTNO, BOOKINGDATE, TIMESLOT, REQUIREMENT) VALUES( ?,?,?,?,?,?,?,?,?)",
                 tourismBookingModel.getFirstName(), tourismBookingModel.getLastName(),
                 tourismBookingModel.getEmail(), tourismBookingModel.getNumber(),
                 tourismBookingModel.getPackageSelect(), tourismBookingModel.getGuestNo(),

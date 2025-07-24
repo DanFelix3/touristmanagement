@@ -12,9 +12,9 @@ public class DbMapper implements RowMapper<TourismBookingModel>{
 
         TourismBookingModel tbm = new TourismBookingModel(rs.getString("firstname"),
                 rs.getString("lastname"), rs.getString("email"),
-                rs.getInt("number"), rs.getString("package"),
-                rs.getString("guestno"), rs.getDate("date"),
-                rs.getString("time"), rs.getString("requirement"));
+                rs.getInt("phnumber"), rs.getString("packageselect"),
+                rs.getString("guestno"), rs.getDate("bookingdate"),
+                rs.getString("timeslot"), rs.getString("requirement"));
         return tbm;
     }
 }

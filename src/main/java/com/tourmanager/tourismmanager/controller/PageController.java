@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -21,15 +22,25 @@ public class PageController {
     TourismManagementServices tourismManagementServices;
 
     @GetMapping("/home")
-    public String displayHomePage(){
+    public String displayHomePage(Model model){
+        model.addAttribute("title", "Not updated");
+        model.addAttribute("tourismBooking", new TourismBookingModel());
         return "index.html";
     }
 
 
     @PostMapping("/createResult")
-    public String showCreateResultPage(@Valid TourismBookingModel tourismBookingModel, BindingResult bindingResul, Model model){
+    public String showCreateResultPage(@Valid @ModelAttribute("tourismBooking") TourismBookingModel tourismBookingModel,
+                                       BindingResult bindingResult,
+                                       Model model) {
+        if (bindingResult.hasErrors()) {
+            return "index.html"; // return form with error messages
+        }
+
         tourismManagementServices.add(tourismBookingModel);
-        model.addAttribute("title","Job Cards Updated");
+        model.addAttribute("title", "Forms Updated");
+        model.addAttribute("tourismBooking", new TourismBookingModel()); // Reset the form
         return "index.html";
     }
+
 }

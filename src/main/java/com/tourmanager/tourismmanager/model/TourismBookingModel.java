@@ -1,14 +1,13 @@
 package com.tourmanager.tourismmanager.model;
 
-
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.constraints.NotNull;
 import java.sql.Date;
 
 @NoArgsConstructor
+@Data
 @Getter
 @Setter
 public class TourismBookingModel {
