@@ -10,11 +10,12 @@ public class DbMapper implements RowMapper<TourismBookingModel>{
     @Override
     public TourismBookingModel mapRow(ResultSet rs, int rowNum) throws SQLException {
 
-        TourismBookingModel tbm = new TourismBookingModel(rs.getString("firstname"),
-                rs.getString("lastname"), rs.getString("email"),
-                rs.getInt("phnumber"), rs.getString("packageselect"),
-                rs.getString("guestno"), rs.getDate("bookingdate"),
-                rs.getString("timeslot"), rs.getString("requirement"));
+        TourismBookingModel tbm = new TourismBookingModel(rs.getInt("id"),
+                rs.getString("firstname"), rs.getString("lastname"),
+                rs.getString("email"), rs.getInt("phnumber"),
+                rs.getString("packageselect"), rs.getString("guestno"),
+                rs.getDate("bookingdate"), rs.getString("timeslot"),
+                rs.getString("requirement"));
         return tbm;
     }
 }

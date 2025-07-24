@@ -23,7 +23,6 @@ public class PageController {
 
     @GetMapping("/home")
     public String displayHomePage(Model model){
-        model.addAttribute("title", "Not updated");
         model.addAttribute("tourismBooking", new TourismBookingModel());
         return "index.html";
     }
@@ -38,7 +37,6 @@ public class PageController {
         }
 
         tourismManagementServices.add(tourismBookingModel);
-        model.addAttribute("title", "Forms Updated");
         model.addAttribute("tourismBooking", new TourismBookingModel()); // Reset the form
         return "index.html";
     }

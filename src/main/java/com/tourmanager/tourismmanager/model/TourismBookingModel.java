@@ -1,7 +1,6 @@
 package com.tourmanager.tourismmanager.model;
 
 import lombok.*;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.constraints.NotNull;
 import java.sql.Date;
@@ -13,43 +12,47 @@ import java.sql.Date;
 public class TourismBookingModel {
 
     @NotNull(message = "Must not be Empty")
-    private String firstName;
+    private Integer id;
 
     @NotNull(message = "Must not be Empty")
-    private String lastName;
+    private String firstname;
+
+    @NotNull(message = "Must not be Empty")
+    private String lastname;
 
     @NotNull(message = "Must not be Empty")
     private String email;
 
     @NotNull(message = "Must not be Empty")
-    private Integer number;
+    private Integer phnumber;
 
     @NotNull(message = "Must not be Empty")
-    private String packageSelect;
+    private String packageselect;
 
     @NotNull(message = "Must not be Empty")
-    private String guestNo;
+    private String guestno;
 
     @NotNull(message = "Must not be Empty")
-    private Date date;
+    private Date bookingdate;
 
     @NotNull(message = "Must not be Empty")
-    private String timeSlot;
+    private String timeslot;
 
     @NotNull(message = "Must not be Empty")
     private String requirement;
 
-    public TourismBookingModel(String firstName, String lastName, String email,
-                               Integer number, String packageSelect, String guestNo,
-                               Date date, String timeSlot, String requirement){
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public TourismBookingModel(Integer id, String firstname, String lastname, String email,
+                               Integer phnumber, String packageselect, String guestno,
+                               Date bookingdate, String timeslot, String requirement){
+        this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.email = email;
-        this.number = number;
-        this.packageSelect = packageSelect;
-        this. guestNo = guestNo;
-        this.date = date;
-        this.timeSlot = timeSlot;
+        this.phnumber = phnumber;
+        this.packageselect = packageselect;
+        this.guestno = guestno;
+        this.bookingdate = bookingdate;
+        this.timeslot = timeslot;
         this.requirement = requirement;
 
     }
