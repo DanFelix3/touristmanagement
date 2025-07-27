@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<html layout:decorate="layouts/defaultLayout"
-            xmlns:th="http://www.thymeleaf.org"
-            xmlns:layout="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -141,7 +139,7 @@
                         <p class="section-subtitle">Your trusted partner for exploring Chennai</p>
                     </div>
                     <p>With over a decade of experience in showcasing Chennai's beauty, we are passionate about creating unforgettable experiences for our guests. Our expert guides are locals who know every corner of this magnificent city.</p>
-                    
+
                     <div class="stats-grid">
                         <div class="stat-item">
                             <div class="stat-number">10,000+</div>
@@ -280,31 +278,31 @@
                 <p class="section-subtitle">Reserve your Chennai adventure today</p>
             </div>
             <div class="booking-form-wrapper">
-                <form class="booking-form" method="post" th:action="@{/tourism/createResult}" th:object="${tourismBooking}">
+                <form class="booking-form" method="post" th:action="@{result}" th:object="${tourismBooking}">
                 <div class="form-row">
                         <div class="form-group">
-                            <label for="firstName">First Name *</label>
-                            <input th:field="*{firstName}" type="text" id="firstName" class="form-control" required>
+                            <label for="firstname">First Name *</label>
+                            <input th:field="*{firstname}" type="text" id="firstname" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="lastName">Last Name *</label>
-                            <input th:field="*{lastName}" type="text" id="lastName" class="form-control" required>
+                            <label for="lastname">Last Name *</label>
+                            <input th:field="*{lastname}" type="text" id="lastname" class="form-control" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
                             <label for="email">Email Address *</label>
-                            <input type="email" id="email" class="form-control" required>
+                            <input th:field="*{email}" type="email" id="email" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="phone">Phone Number *</label>
-                            <input type="tel" id="phone" class="form-control" required>
+                            <label for="phnumber">Phone Number *</label>
+                            <input th:field="*{phnumber}" type="tel" id="phnumber" class="form-control" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="package">Select Package *</label>
-                            <select id="package" class="form-control" required>
+                            <label for="packageselect">Select Package *</label>
+                            <select th:field="*{packageselect}" id="packageselect" class="form-control" required>
                                 <option value="">Choose a package</option>
                                 <option value="marina">Marina Beach & Coastal Tour - ₹2,500</option>
                                 <option value="heritage">Heritage & Temple Tour - ₹3,200</option>
@@ -313,8 +311,8 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="guests">Number of Guests *</label>
-                            <select id="guests" class="form-control" required>
+                            <label for="guestno">Number of Guests *</label>
+                            <select th:field="*{guestno}" id="guestno" class="form-control" required>
                                 <option value="1">1 Guest</option>
                                 <option value="2">2 Guests</option>
                                 <option value="3">3 Guests</option>
@@ -325,12 +323,12 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="date">Preferred Date *</label>
-                            <input type="date" id="date" class="form-control" required>
+                            <label for="bookingdate">Preferred Date *</label>
+                            <input th:field="*{bookingdate}" type="date" id="bookingdate" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="time">Preferred Time</label>
-                            <select id="time" class="form-control">
+                            <label for="timeslot">Preferred Time</label>
+                            <select th:field="*{timeslot}" id="timeslot" class="form-control">
                                 <option value="morning">Morning (9:00 AM)</option>
                                 <option value="afternoon">Afternoon (2:00 PM)</option>
                                 <option value="flexible">Flexible</option>
@@ -339,7 +337,7 @@
                     </div>
                     <div class="form-group">
                         <label for="requirements">Special Requirements</label>
-                        <textarea id="requirements" class="form-control" rows="3" placeholder="Any special requirements or requests..."></textarea>
+                        <textarea th:field="*{requirements}" id="requirements" class="form-control" rows="3" placeholder="Any special requirements or requests..."></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary btn-large">Complete Booking</button>
                     <p class="booking-note">You will receive a confirmation email with payment details after submitting this form.</p>
@@ -417,12 +415,12 @@
             function updateBookingSummary() {
                 const selectedPackage = packageSelect.value;
                 const selectedGuests = parseInt(guestsSelect.value) || 1;
-                
+
                 if (selectedPackage && packagePrices[selectedPackage]) {
                     const packageText = packageSelect.options[packageSelect.selectedIndex].text;
                     selectedPackageSpan.textContent = packageText.split(' - ')[0];
                     selectedGuestsSpan.textContent = selectedGuests;
-                    
+
                     const total = packagePrices[selectedPackage] * selectedGuests;
                     totalAmountSpan.textContent = `₹${total.toLocaleString()}`;
                 } else {
@@ -457,3 +455,48 @@
     </script>
 </body>
 </html>
+
+<!--<!doctype html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org" >-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport"-->
+<!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>Index Page</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h1>Test Document</h1>-->
+<!--    <form action="#" class="booking-form" method="post" th:action="@{result}" th:object="${tourismBooking}">-->
+<!--        <label for="firstname">first Name *</label>-->
+<!--        <input th:field="*{firstname}" type="text" id="firstname" class="form-control" required>-->
+<!--        <br>-->
+<!--        <label for="lastname">Last Name *</label>-->
+<!--        <input th:field="*{lastname}" type="text" id="lastname" class="form-control" required>-->
+<!--        <br>-->
+<!--        <label for="email">email *</label>-->
+<!--        <input th:field="*{email}" type="text" id="email" class="form-control" required>-->
+<!--        <br>-->
+<!--        <label for="phnumber">phnumber *</label>-->
+<!--        <input th:field="*{phnumber}" type="text" id="phnumber" class="form-control" required>-->
+<!--        <br>-->
+<!--        <label for="packageselect">packageselect *</label>-->
+<!--        <input th:field="*{packageselect}" type="text" id="packageselect" class="form-control" required>-->
+<!--        <br>-->
+<!--        <label for="guestno">guestno *</label>-->
+<!--        <input th:field="*{guestno}" type="text" id="guestno" class="form-control" required>-->
+<!--        <br>-->
+<!--        <label for="bookingdate">bookingdate *</label>-->
+<!--        <input th:field="*{bookingdate}" type="date" id="bookingdate" class="form-control" required>-->
+<!--        <br>-->
+<!--        <label for="timeslot">time slot *</label>-->
+<!--        <input th:field="*{timeslot}" type="text" id="timeslot" class="form-control" required>-->
+<!--        <br>-->
+<!--        <label for="requirements">requirements</label>-->
+<!--        <input th:field="*{requirements}" type="text" id="requirements" class="form-control">-->
+<!--        <br>-->
+<!--        <button type="submit">Complete Booking</button>-->
+<!--    </form>-->
+
+<!--</body>-->
+<!--</html>-->

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -21,6 +21,11 @@ public class PageController {
     @Autowired
     TourismManagementServices tourismManagementServices;
 
+    @GetMapping("/")
+    public String redirectToHome() {
+        return "redirect:/tourism/home";
+    }
+
     @GetMapping("/home")
     public String displayHomePage(Model model){
         model.addAttribute("tourismBooking", new TourismBookingModel());
@@ -28,17 +33,12 @@ public class PageController {
     }
 
 
-    @PostMapping("/createResult")
-    public String showCreateResultPage(@Valid @ModelAttribute("tourismBooking") TourismBookingModel tourismBookingModel,
+    @PostMapping("/result")
+    public String showCreateResultPage(@Valid TourismBookingModel tourismBookingModel,
                                        BindingResult bindingResult,
                                        Model model) {
-        if (bindingResult.hasErrors()) {
-            return "index.html"; // return form with error messages
-        }
-
         tourismManagementServices.add(tourismBookingModel);
-        model.addAttribute("tourismBooking", new TourismBookingModel()); // Reset the form
-        return "index.html";
+        return "result";
     }
 
 }

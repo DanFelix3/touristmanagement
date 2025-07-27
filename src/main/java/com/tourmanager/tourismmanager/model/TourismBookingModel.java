@@ -2,17 +2,13 @@ package com.tourmanager.tourismmanager.model;
 
 import lombok.*;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 import java.sql.Date;
 
-@NoArgsConstructor
 @Data
-@Getter
-@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class TourismBookingModel {
-
-    @NotNull(message = "Must not be Empty")
-    private Integer id;
 
     @NotNull(message = "Must not be Empty")
     private String firstname;
@@ -24,7 +20,7 @@ public class TourismBookingModel {
     private String email;
 
     @NotNull(message = "Must not be Empty")
-    private Integer phnumber;
+    private String phnumber;
 
     @NotNull(message = "Must not be Empty")
     private String packageselect;
@@ -38,23 +34,6 @@ public class TourismBookingModel {
     @NotNull(message = "Must not be Empty")
     private String timeslot;
 
-    @NotNull(message = "Must not be Empty")
-    private String requirement;
-
-    public TourismBookingModel(Integer id, String firstname, String lastname, String email,
-                               Integer phnumber, String packageselect, String guestno,
-                               Date bookingdate, String timeslot, String requirement){
-        this.id = id;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.email = email;
-        this.phnumber = phnumber;
-        this.packageselect = packageselect;
-        this.guestno = guestno;
-        this.bookingdate = bookingdate;
-        this.timeslot = timeslot;
-        this.requirement = requirement;
-
-    }
+    private String requirements;
 
 }

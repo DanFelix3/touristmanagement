@@ -1,0 +1,22 @@
+Updated Spring Boot version to 3.0
+So had to change the dependencies as well
+
+Note:
+Changes javax.validation (does not exist anymore) to jakarta.validation
+
+Updated intellij to 25 version
+updated lombok models as well
+
+removed layout from thymeleaf in html file
+Html file became stand alone file
+
+Lombok Getters and Setters were a mess and hence after updation everything worked fine
+
+Learnt to maven clean and install from window tools menu -> maven tools
+
+Overriding issue solved by updating SpringBoot
+
+Reframed entire pom.xml file
+
+mysql-connector-java not mysql-connector-j
+
