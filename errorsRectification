@@ -20,3 +20,7 @@ Reframed entire pom.xml file
 
 mysql-connector-java not mysql-connector-j
 
+mysql issues:
+    insert into statement does not need type for the columns
+    check for the case of column names (they are case sensitive)
+    always get phnumber using varchar or use BIGINT in database, since INT cannot store such a large value in database
